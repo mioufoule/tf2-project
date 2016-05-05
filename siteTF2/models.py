@@ -7,6 +7,6 @@ from django.db import models
 
 class Post(models.Model):
     contenu = models.CharField(max_length=5000)
-    auteur = modles.CharField("publié par")
-    pub_date = models.CharField("publié le")
-    edit_date = models.CharField("modifié le")
+    auteur = models.CharField("publié par", max_length=50)
+    pub_date = models.DateTimeField("publié le")
+    edit_date = models.DateTimeField("modifié le")

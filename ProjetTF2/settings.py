@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'siteTF2'
 ]
 
 MIDDLEWARE_CLASSES = [
