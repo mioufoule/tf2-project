@@ -5,6 +5,6 @@ from django.conf.urls import include, url
 from django.contrib import admin
 
 urlpatterns = [
-    url(r'^siteTF2/', include('siteTF2.urls')),
+    url(r'^siteTF2/', include('siteTF2.urls', namespace="siteTF2")),
     url(r'^admin/', admin.site.urls),
 ]

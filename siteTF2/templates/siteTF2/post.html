@@ -1,0 +1,23 @@
+{% extends "siteTF2/base.html" %}
+
+{% block content %}
+
+<p><a href="/forum/"> Retour a la liste des forums </a> </p>
+
+<p><a href="/forum/{{ thread_info.forum_id }}"> Retour a la liste des threads </a> </p>
+
+<p>{{ thread_info.title }}: </p>
+
+<p>{{ thread_info.content }}
+{{ thread_info.pub_date }}
+</p>
+
+{% if post_list %}
+{% for POST in post_list %}
+        <p>{{ POST.content }} {{ POST.pub_date }} </p>
+    {% endfor %}
+{% else %}
+    <p>Aucune reponse</p>
+{% endif %}
+
+{% endblock %}
