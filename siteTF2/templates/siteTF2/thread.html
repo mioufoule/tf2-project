@@ -9,7 +9,7 @@
 {% if thread_list %}
     <ul>
 {% for thread in thread_list %}
-    <li><a href="{% url 'siteTF2:post' thread.forum.id thread.id }}/">{{ thread.title }}</a></li>
+    <li><a href="{% url 'siteTF2:post' p.id thread.id %}/">{{ thread.title }}</a></li>
     {{ Thread.pub_date }}
 {% endfor %}
     </ul>

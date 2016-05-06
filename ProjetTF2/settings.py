@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     # 'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
-    'siteTF2'
+    'siteTF2',
+    'bootstrap3',
 ]
 
 MIDDLEWARE_CLASSES = [

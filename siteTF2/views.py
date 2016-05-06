@@ -1,11 +1,13 @@
 #!/usr/bin/env python
 #-*- coding: utf-8 -*-
+
 from django.template import RequestContext
 from django.shortcuts import render, render_to_response, get_object_or_404
 from django.http import HttpResponse
 from .models import *
 
 
+# renvoie la liste des news de l'accueil au template index.html
 def index(request):
     PostAccueil_list = PostAccueil.objects.all()
     return render(request, 'siteTF2/index.html', locals())
