@@ -1,0 +1,15 @@
+{% extends "siteTF2/base.html" %}
+
+{% block content %}
+
+{% if forum_list %}
+    <ul>
+{% for forum in forum_list %}
+    <li><a href="{% url 'siteTF2:thread' forum.id %}">{{ forum.title }}</a></li>
+{% endfor %}
+    </ul>
+{% else %}
+    <p>Aucun forum disponible ! (ça m'étonnerait que ça arrive mais bon)</p>
+{% endif %}
+
+{% endblock %}

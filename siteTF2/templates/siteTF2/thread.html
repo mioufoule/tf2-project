@@ -1,0 +1,26 @@
+{% extends "siteTF2/base.html" %}
+
+{% block content %}
+
+<p>{{ forum_title }}: </p>
+
+<p><a href="/forum/"> Retour a la liste des forums </a> </p>
+
+{% if thread_list %}
+    <ul>
+{% for thread in thread_list %}
+    <li><a href="{% url 'siteTF2:post' p.id thread.id %}/">{{ thread.title }}</a></li>
+    {{ Thread.pub_date }}
+{% endfor %}
+    </ul>
+{% else %}
+    <p>Aucun sujet disponible</p>
+{% endif %}
+
+<form action="{% url 'siteTF2:thread' p.id %}/" method="post">
+{% csrf_token %}
+{{ form.as_p }}
+<input type="submit" value="Submit" />
+</form>
+
+{% endblock %}

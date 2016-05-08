@@ -1,0 +1,11 @@
+{% extends 'siteTF2/base.html' %}
+
+{% block content %}
+
+{% for postAccueil in PostAccueil_list %}
+  {{postAccueil.contenu}} <br/>
+  {{postAccueil.auteur}}
+  {{postAccueil.pub_date}}
+{% endfor %}
+
+{% endblock %}

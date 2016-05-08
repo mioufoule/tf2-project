@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+  </head>
+  <body>
+      <div class="page-header container">
+          <h1><a href="#">Team introuvable</a></h1>
+          <ul class="nav nav-pills">
+            <li role="presentation"><a href="{% url 'siteTF2:index' %}">Home</a></li>
+            <li role="presentation"><a href="#">Statistiques</a></li>
+            <li role="presentation"><a href="{% url 'siteTF2:forum' %}">Forum</a></li>
+            <li role="presentation"><a href="#">Se connecter</a></li>
+          </ul>
+      </div>
+      <div class="content container">
+          <div>
+              <div>
+              {% block content %}
+              {% endblock %}
+              </div>
+          </div>
+      </div>
+  </body>
+</html>
