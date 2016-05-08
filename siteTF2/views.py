@@ -3,9 +3,10 @@
 
 from django.template import RequestContext
 from django.shortcuts import render, render_to_response, get_object_or_404
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
+from django.core.urlresolvers import reverse
 from .models import *
-
+from .forms import *
 
 # renvoie la liste des news de l'accueil au template index.html
 def index(request):
@@ -15,18 +16,21 @@ def index(request):
 
 def forum(request):
     forum_list = Forum.objects.all()
-    return render_to_response("siteTF2/forum.html",
-                              {'forum_list' : forum_list})
-    if request.method == 'POST': # If the form has been submitted...
-        form = ThreadForm(request.POST) # A form bound to the POST data
-        if form.is_valid(): # All validation rules pass
-            forum = Thread( forum = forum_info )
-            form = ThreadForm(request.POST, instance = forum )
+    return render(request, 'siteTF2/forum.html', locals())
+
+def ajouterForum(request):
+    titrePage = 'ajouter un forum'
+    if request.method == 'POST': #  If the form has been submitted...
+        form = ForumForm(request.POST) #  A form bound to the POST data
+        if form.is_valid(): #  All validation rules pass
+            forum = Forum()
+            forum.title = form.cleaned_data['title']
+            forum.description = form.cleaned_data['description']
             form.save()
-            return HttpResponseRedirect(reverse('forum.views.thread_dir', args=(forum_id,)))
+            return HttpResponseRedirect(reverse('siteTF2:forum'))
     else:
-        form = ThreadForm() # An unbound form
-        return render(request, 'siteTF2:thread', locals())
+        form = ForumForm() # An unbound form
+        return render(request, 'siteTF2/forumForm.html', locals())
 
 
 def thread(request, forum_id):
@@ -34,7 +38,6 @@ def thread(request, forum_id):
     p = Forum.objects.get( id = forum_id )
     forum_title = p.title
     return render_to_response("siteTF2/thread.html", locals())
-
     if request.method == 'POST':
         form = PostForm(request.POST)
         if form.is_valid():

@@ -16,6 +16,7 @@ class PostAccueil(models.Model):
 # liste des forums, éditable que par un admin
 class Forum(models.Model):
     title = models.CharField(max_length=60)
+    description = models.CharField(max_length=500)
     def __unicode__(self):
         return self.title
 

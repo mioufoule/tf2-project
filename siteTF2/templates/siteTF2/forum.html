@@ -2,6 +2,8 @@
 
 {% block content %}
 
+<a href="{% url 'siteTF2:ajouterForum' %}"> ajouter un forum </a>
+
 {% if forum_list %}
     <ul>
 {% for forum in forum_list %}
