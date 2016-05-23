@@ -26,7 +26,7 @@ class Thread(models.Model):
     forum = models.ForeignKey(Forum)
     title = models.CharField(max_length=60)
     content = models.TextField(max_length=10000)
-    pub_date = models.DateTimeField(auto_now_add=True)
+    pub_date = models.DateTimeField()
     def __unicode__(self):
         return self.title
 

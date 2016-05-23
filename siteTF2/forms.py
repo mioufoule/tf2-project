@@ -12,7 +12,7 @@ class ThreadForm(ModelForm):
     class Meta:
         model = Thread
         fields = '__all__'
-        exclude = ['forum']
+        exclude = ['forum', 'pub_date']
 
 
 class PostForm(ModelForm):

@@ -1,28 +1,35 @@
 {% extends "siteTF2/base.html" %}
+{% load bootstrap3 %}
+
 
 {% block content %}
 
-<p>{{ forum_title }}: </p>
+  <p>{{ forum_title }}</p>
 
-  <p><a href="{% url 'siteTF2:forum' %}"> Retour a la liste des forums </a> </p>
+  <p><a href="{% url 'siteTF2:forum' %}">Retour a la liste des forums</a> </p>
 
-  <a href="#"> nouveau sujet </a>
+  <a href="{% url 'siteTF2:ajouterThread' forum.id %}">nouveau sujet</a>
 
-  {% if thread_list %}
-    <ul>
-      {% for thread in thread_list %}
-        <li><a href="{% url 'siteTF2:post' p.id thread.id %}/">{{ thread.title }}</a></li>
-        {{ Thread.pub_date }}
-      {% endfor %}
-    </ul>
-  {% else %}
-    <p>Aucun sujet disponible</p>
-  {% endif %}
+  <br/> <br/>
+    {% if thread_list %}
+      <table class="table table-bordered">
+        {% for thread in thread_list %}
 
-  <form action="{% url 'siteTF2:thread' p.id %}/" method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Submit" />
-  </form>
+          <tr class="active">
+            <td>
+              <a href="{% url 'siteTF2:post' forum.id thread.id %}">
+                {{ thread.title }}</a>
+            </td>
+          </tr>
+        <tr>
+          <td>{{ thread.content}}
+          <br/>
+          {{ Thread.pub_date }}</td>
+        </tr>
+        {% endfor %}
+      </table>
+    {% else %}
+      <p>Aucun sujet disponible</p>
+    {% endif %}
 
 {% endblock %}
